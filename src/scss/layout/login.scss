@@ -1,0 +1,43 @@
+.login
+{
+    width: 100vw;
+    height: 100vh;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    &-l
+    {
+        background-image: url("../img/background.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        width: 100%;
+        height: 100%;
+    }
+
+    &-r
+    {
+        padding: 2rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &c
+        {
+            min-width: 25rem;
+            max-width: 30rem;
+
+            padding: 1rem;
+            border: 1px solid rgb(197, 197, 197);
+            border-radius: 8px;
+        }
+        &c-separador
+        {
+            border-bottom: 1px solid #bebebe;
+
+        }
+    }
+}

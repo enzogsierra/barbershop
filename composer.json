@@ -1,0 +1,22 @@
+{
+    "name": "enzo/appsalon",
+    "description": "Proyecto PHP8, MVC, SQL, SASS, Gulp",
+    "type": "project",
+    "autoload": 
+    {
+        "psr-4": 
+        {
+            "MVC\\": "./",
+            "Controllers\\": "./controllers",
+            "Model\\": "./models"
+        }
+    },
+    "authors": 
+    [
+        {
+            "name": "Enzo",
+            "email": "example@mail.com"
+        }
+    ],
+    "require": {}
+}
