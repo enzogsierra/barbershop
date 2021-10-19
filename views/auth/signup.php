@@ -19,8 +19,8 @@
 
             <form method="POST" class="text-start">
                 <div class="border-bottom mb-3">
-                    <input name="email" type="email" class="form-control mb-3"          value="<?php echo s($user->email); ?>" placeholder="Correo electrónico" autofocus required>
-                    <input name="password" type="password" class="form-control mb-3"    placeholder="Contraseña" required>
+                    <input name="email" type="email" class="form-control mb-3"          value="<?php echo s($user->email); ?>" placeholder="Correo electrónico" required autofocus>
+                    <input name="password" type="password" class="form-control mb-3"    placeholder="Contraseña" required autocomplete="new-password">
                 </div>
          
                 <div class="input-group gap-2 mb-3">

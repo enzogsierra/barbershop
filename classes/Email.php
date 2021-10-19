@@ -33,7 +33,7 @@ class Email
         $html = "<html>";
         $html .= "<h1>Bienvenido a AppSalon!</h1>";
         $html .= "<p>Estimado <strong>$this->name</strong>, tómate un momento para confirmar que tu dirección de correo electrónico es correcta y te pertenece.</p>";
-        $html .= "<p><a href='http://localhost:3000/confirm?token=$this->token'>Verificar</a></p><br><br>";
+        $html .= "<p><a href='http://localhost:3000/email-confirmation?token=$this->token'>Verificar</a></p><br><br>";
         $html .= "Si usted no solicitó una cuenta en appsalon.com, ignore este mensaje.";
         $html .= "</html>";
 
@@ -66,7 +66,7 @@ class Email
         $html = "<html>";
         $html .= "<h1>Estimado $this->name</h1>";
         $html .= "<p>Nos llegó un pedido para recuperar tu cuenta. Si no fuiste tú, puedes ingorar este mensaje. Si deseas reestablecer tu contraseña, sigue el siguiente enlace:</p>";
-        $html .= "<p><a href='http://localhost:3000/reset-password?token=$this->token'>Recuperar cuenta</a></p><br><br>";
+        $html .= "<p><a href='http://localhost:3000/password-reset?token=$this->token'>Reestablecer contraseña</a></p><br><br>";
         $html .= "</html>";
         $mail->Body = $html;
 

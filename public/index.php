@@ -2,27 +2,27 @@
 require_once __DIR__ . "/../includes/app.php";
 session_start();
 
-use Controllers\LoginController;
+use Controllers\AuthController;
 use MVC\Router;
 
 $router = new Router();
 
 // Login
-$router->get("/", [LoginController::class, "login"]);
-$router->post("/", [LoginController::class, "login"]);
-$router->get("/logout", [LoginController::class, "logout"]);
+$router->get("/", [AuthController::class, "login"]);
+$router->post("/", [AuthController::class, "login"]);
+$router->get("/logout", [AuthController::class, "logout"]);
+$router->get("/auth-msg", [AuthController::class, "authMsg"]);
 
 // Crear cuentas
-$router->get("/signup", [LoginController::class, "signup"]);
-$router->post("/signup", [LoginController::class, "signup"]);
-$router->get("/confirmation-sent", [LoginController::class, "confirmationSent"]);
-$router->get("/confirm", [LoginController::class, "confirm"]);
+$router->get("/signup", [AuthController::class, "signup"]);
+$router->post("/signup", [AuthController::class, "signup"]);
+$router->get("/email-confirmation", [AuthController::class, "emailConfirmation"]);
 
 // Recuperar contraseña
-$router->get("/recover", [LoginController::class, "recover"]);
-$router->post("/recover", [LoginController::class, "recover"]);
-$router->get("/reset-password", [LoginController::class, "resetPassword"]);
-$router->post("/reset-password", [LoginController::class, "resetPassword"]);
+$router->get("/password-recovery", [AuthController::class, "passwordRecovery"]);
+$router->post("/password-recovery", [AuthController::class, "passwordRecovery"]);
+$router->get("/password-reset", [AuthController::class, "passwordReset"]);
+$router->post("/password-reset", [AuthController::class, "passwordReset"]);
 
 //
 $router->checkRoutes();

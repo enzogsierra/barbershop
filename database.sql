@@ -10,7 +10,7 @@ CREATE TABLE appsalon.users
     tel VARCHAR(16),
     isAdmin TINYINT(1),
     isConfirmed TINYINT(1),
-    token VARCHAR(15)
+    token VARCHAR(16)
 );
 
 /* Tabla para servicios */

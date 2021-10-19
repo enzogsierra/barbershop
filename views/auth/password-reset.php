@@ -19,8 +19,8 @@
             <p class="mb-4">Introduce tu nueva contraseña</p>
             
             <form method="POST">
-                <input name="password" type="password" placeholder="Nueva contraseña" class="form-control my-2" required autofocus>
-                <input name="password-2" type="password" placeholder="Confirmar contraseña" class="form-control my-2" required>
+                <input name="password" type="password" placeholder="Nueva contraseña" class="form-control my-2" required autofocus autocomplete="new-password">
+                <input name="password-2" type="password" placeholder="Confirmar contraseña" class="form-control my-2" required autocomplete="new-password">
                 
                 <button type="submit" class="btn btn-primary w-100 mt-2">Reestablecer</button>
             </form>

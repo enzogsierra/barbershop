@@ -5,7 +5,7 @@ use Classes\Email;
 use Model\User;
 use MVC\Router;
 
-class LoginController
+class AuthController
 {
     // Iniciar sesión
     public static function login(Router $router)
@@ -75,8 +75,9 @@ class LoginController
                         $email = new Email($user->email, $user->name, $user->token);
                         $email->sendConfirmation();
 
-                        $_SESSION["confirmation-sent-email"] = $user->email;
-                        header("Location: /confirmation-sent");
+                        $_SESSION["auth-msg"]["id"] = 1;
+                        $_SESSION["auth-msg"]["email"] = $user->email;
+                        header("Location: /auth-msg");
                     }
                     else // No se pudo crear el usuario
                     {
@@ -107,11 +108,16 @@ class LoginController
         unset($_SESSION["confirmation-sent-email"]);
     }
 
-    public static function confirm(Router $router)
+    public static function emailConfirmation(Router $router)
     {
         $token = $_GET["token"] ?? NULL;
-        if(!ctype_alnum($token)) header("Location: /"); // Token no válido
+        if(!ctype_alnum($token)) 
+        {
+            $_SESSION["auth-msg"]["id"] = 3;
+            header("Location: /auth-msg");
+        }
 
+        //
         $user = User::where("token", $token);
         $user = array_shift($user);
 
@@ -120,18 +126,17 @@ class LoginController
             $user->token = "";
             $user->isConfirmed = "1";
             $user->update();
-        }
-        else // Token no válido
-        {
-            header("Location: /");
-        }
 
-        $router->render("auth/confirm");
+            $_SESSION["auth-msg"]["id"] = 2;
+        }
+        else $_SESSION["auth-msg"]["id"] = 3; // Token no válido
+
+        header("Location: /auth-msg");
     }
 
 
     // Recuperar contraseña
-    public static function recover(Router $router)
+    public static function passwordRecovery(Router $router)
     {
         $errors = [];
         if($_SERVER["REQUEST_METHOD"] === "POST")
@@ -154,24 +159,37 @@ class LoginController
                     // Enviar email
                     $email = new Email($user->email, $user->name, $user->token);
                     $email->sendRecover();
+
+                    //
+                    $_SESSION["auth-msg"]["id"] = 4;
+                    header("Location: /auth-msg");
                 }
             }
         }
-        $router->render("auth/recover",
+
+        $router->render("auth/password-recovery",
         [
             "errors" => $errors,
             "email" => $email ?? NULL
         ]);
     }
 
-    public static function resetPassword(Router $router)
+    public static function passwordReset(Router $router)
     {
         $token = $_GET["token"] ?? NULL;
-        if(!ctype_alnum($token)) header("Location: /"); // Token no válido
+        if(!ctype_alnum($token)) // Token no válido
+        {
+            $_SESSION["auth-msg"]["id"] = 3;
+            header("Location: /auth-msg");
+        }
 
         $user = User::where("token", $token);
         $user = array_shift($user);
-        if(!$user)  header("Location: /");
+        if(!$user) 
+        {
+            $_SESSION["auth-msg"]["id"] = 3;
+            header("Location: /auth-msg");
+        }
 
         //
         $errors = [];
@@ -191,14 +209,31 @@ class LoginController
                 $user->password = password_hash($password, PASSWORD_BCRYPT);
                 $user->token = "";
 
-                if($user->update()) header("Location: /");
-                else $errors[] = "Hubo un error al reestablecer la contraseña. Intenta de nuevo más tarde xd";
+                if($user->update()) 
+                {
+                    $_SESSION["auth-msg"]["id"] = 5;
+                    header("Location: /auth-msg");
+                }
+                else $errors[] = "Hubo un error al reestablecer la contraseña. Intenta de nuevo más tarde";
             }
         }
 
-        $router->render("auth/reset-password",
+        $router->render("auth/password-reset",
         [
             "errors" => $errors
+        ]);
+    }
+
+    //
+    public static function authMsg(Router $router)
+    {
+        $msg = $_SESSION["auth-msg"] ?? NULL;
+        if(!isset($msg["id"])) header("Location: /");
+
+        unset($_SESSION["auth-msg"]);
+        $router->render("auth/auth-msg",
+        [
+            "msg" => $msg
         ]);
     }
 }

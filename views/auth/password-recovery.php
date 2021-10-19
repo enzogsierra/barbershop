@@ -15,14 +15,24 @@
 
         <!-- Formulario -->
         <div class="p-3 border login-rc text-center">
-            <h1 class="my-0">Recuperar contraseña</h1>
+            <h1 class="my-1">Recuperar contraseña</h1>
             <p class="mb-4">Introduce tu correo electrónico, te enviaremos un enlace para que puedas recuperar tu contraseña</p>
             
             <form method="POST">
-                <input name="email" type="email" placeholder="Correo electrónico" class="form-control my-0" required autofocus>
+                <input name="email" type="email" placeholder="Correo electrónico" class="form-control" required autofocus>
                 
                 <button type="submit" class="btn btn-primary w-100 mt-2">Enviar</button>
             </form>
+
+            <!--  -->
+            <div class="border-bottom my-3">
+                
+            </div>
+
+            <div class="d-flex justify-content-evenly gap-2">
+                <a href="/" class="btn btn-outline-secondary w-100">Iniciar sesión</a>
+                <a href="/signup" class="btn btn-success w-100">Crear cuenta</a>
+            </div>
         </div>
     </div>
 </div>

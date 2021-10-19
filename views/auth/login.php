@@ -19,12 +19,12 @@
 
             <form method="POST" class="mb-1">
                 <input name="email" type="email" class="form-control mb-3" value="<?php echo $email; ?>" placeholder="Correo electrónico" required>
-                <input name="password" type="text" class="form-control mb-3" placeholder="Contraseña" required>
+                <input name="password" type="password" class="form-control mb-3" placeholder="Contraseña" required>
                 
                 <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
             </form>
 
-            <a href="/recover">¿Olvidate tu contraseña?</a>
+            <a href="/password-recovery">¿Olvidate tu contraseña?</a>
 
             <div class="border-bottom my-3">
                 
