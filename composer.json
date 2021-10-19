@@ -8,7 +8,8 @@
         {
             "MVC\\": "./",
             "Controllers\\": "./controllers",
-            "Model\\": "./models"
+            "Model\\": "./models",
+            "Classes\\": "./classes"
         }
     },
     "authors": 
@@ -18,5 +19,7 @@
             "email": "example@mail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "phpmailer/phpmailer": "^6.5"
+    }
 }

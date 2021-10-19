@@ -22,22 +22,14 @@
         padding: 2rem;
 
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
 
         &c
         {
-            min-width: 25rem;
-            max-width: 30rem;
-
-            padding: 1rem;
-            border: 1px solid rgb(197, 197, 197);
+            width: 28rem;
             border-radius: 8px;
-        }
-        &c-separador
-        {
-            border-bottom: 1px solid #bebebe;
-
         }
     }
 }

@@ -2,15 +2,16 @@
 require __DIR__ . "/../vendor/autoload.php";
 
 // DB
+use Model\ActiveRecord;
 $db = mysqli_connect("localhost", "root", "root", "appsalon");
+ActiveRecord::setDB($db);
+
 if(!$db)
 {
     echo "No se pudo conectar a la base de datos";
     exit;
 }
 
-use Model\ActiveRecord;
-ActiveRecord::setDB($db);
 
 //
 function debug($var, $exit = 1)
