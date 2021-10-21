@@ -1,5 +1,6 @@
 const summary =
 {
+    id: null,
     name: "",
     date: "",
     time: "",
@@ -9,7 +10,8 @@ const summary =
 document.addEventListener("DOMContentLoaded", function()
 {
     // Init
-    openTab(3);
+    openTab(1);
+    summary.id = document.querySelector("input#date-id").value;
     summary.name = document.querySelector("input#date-name").value; // Leer el nombre desde el input en "Reservacion"
 
     //
@@ -92,7 +94,7 @@ function createServices(services)
         card.innerHTML = 
         `
             <p class="service-text my-0 fs-5">${text}</p>
-            <p class="service-price my-0 fs-4 fw-bold">$${price}</p>
+            <p class="service-price my-0 fs-4 fw-bold">$${parseInt(price)}</p>
         `;
         
         card.onclick = function()
@@ -159,6 +161,7 @@ function timeHandler()
         if(val[0] >= 8 && val[0] <= 21) // Hora valida
         {
             summary.time = e.target.value;
+            hideAlert();
         }
         else // Hora no válida
         {
@@ -225,7 +228,7 @@ function showSummary()
     // Resumen-servicios
     html += 
     `
-        <div class="my-4 px-4 py-3 d-flex flex-column gap-0 rounded bg-light bg-gradient bg-opacity-25">
+        <div class="my-4 px-4 py-3 d-flex flex-column rounded text-start bg-light bg-gradient bg-opacity-25">
             <div class="mb-3 p-0 d-flex justify-content-between gap-2 text-info fw-bold">
                 <p class="m-0 fs-3">Servicios</p>
                 <p class="m-0 fs-3">Precio</p>
@@ -236,9 +239,9 @@ function showSummary()
         total += parseFloat(service.price);
         html += 
         `
-            <div class="m-0 px-1 py-1 d-flex justify-content-between gap-2 border-top">
+            <div class="m-0 px-1 py-1 d-flex justify-content-between gap-3 border-top">
                 <p class="m-0 fs-5 fw-light">${service.text}</p>
-                <p class="m-0 fs-5 fw-light">&dollar;${Math.round(service.price)}</p>
+                <p class="m-0 fs-5 fw-light">&dollar;${parseInt(service.price)}</p>
             </div>
         `;
     });
@@ -246,7 +249,7 @@ function showSummary()
     `
             <div class="pt-2 pe-1 d-flex justify-content-end gap-4 border-top fw-bold">
                 <p class="m-0 fs-4 text-info">Total</p>
-                <p class="m-0 fs-4">&dollar;${Math.round(total)}</p>
+                <p class="m-0 fs-4">&dollar;${parseInt(total)}</p>
             </div>
 
             <div class="w-auto text-end">
@@ -258,32 +261,52 @@ function showSummary()
     //
     div.innerHTML = html;
 
-    /*const bookbtn = div.querySelector("#summary-book-btn");
-    bookbtn.onclick = bookDate;*/
+    const bookbtn = div.querySelector("#summary-book-btn");
+    bookbtn.onclick = bookDate;
 }
 
 async function bookDate()
 {
-    const {name, date, time, services} = summary;
+    const {date, time, services} = summary;
 
     // Crear form
     const form = new FormData();
-    form.append("name", name);
     form.append("date", date);
     form.append("time", time);
     form.append("services", services.map(service => service.id));
+    //console.log([...form]);
 
-    console.log([...form]);
-
-    // Enviar
-    const api = await fetch(`${window.location.href}api/book-date`,
+    try
     {
-        method: "POST",
-        body: form
-    });
-    const response = await api.json();
+        // Enviar
+        const api = await fetch(`${window.location.href}api/book-date`,
+        {
+            method: "POST",
+            body: form
+        });
+        const response = await api.json();
 
-    console.log(response);
+        // Se creó la cita
+        if(response.success)
+        {
+            Swal.fire(
+            {
+                icon: "success",
+                title: "Reservado!",
+                text: "Tu cita se reservó correctamente.",
+                confirmButtonText: "Aceptar"
+            }).then(() => { window.location.reload(); });
+        }
+    }
+    catch
+    {
+        Swal.fire(
+        {
+            icon: 'error',
+            title: 'Ocurrió un error',
+            text: 'Hubo un error al reservar tu cita, intenta nuevamente más tarde'
+        });
+    }
 }
 
 

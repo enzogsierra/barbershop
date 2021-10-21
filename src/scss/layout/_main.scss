@@ -7,34 +7,29 @@ body
 {
     background-image: url("../img/background.jpg");
     background-size: cover;
-    background-position: 60% 0;
+    background-position: center;
     background-repeat: no-repeat;
 
-    width: 100%;
-    height: max-content;
     min-height: 100vh;
 }
 
-
-// Lado izquierdo
 @media(max-width: 768px)
 {
-    .main 
+    body 
     {
-        .header-link { text-align: center; }
+        .h1 { text-align: center; }
         flex-direction: column; 
     }
 }
 
 
-// Lado derecho
-.app
+
+// Right side
+.app-end
 {
     width: 100%;
     min-width: 15rem;
     max-width: 48rem;
-
-    height: 100%;
     min-height: 100vh;
 
     background-color: rgba(0, 0, 0, .8);
@@ -42,9 +37,10 @@ body
     backdrop-filter: blur(3px);
 }
 
-@media(max-width: 480px)
-{
-    .nav { flex-direction: column; }
+.auth-card
+{ 
+    width: 28rem;
+    border-radius: 8px;
 }
 
 
@@ -83,5 +79,7 @@ body
 
 @media(max-width: 480px)
 {
+    .nav { flex-direction: column; }
     .tab-services { grid-template-columns: 1fr; }
+    #summary-book-btn { width: 100%; }
 }

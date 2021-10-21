@@ -51,6 +51,13 @@ class AuthController
         ]);
     }
 
+    public static function logout(Router $router)
+    {
+        $_SESSION = [];
+        header("Location: /");
+    }
+    
+
     // Crear cuenta
     public static function signup(Router $router)
     {

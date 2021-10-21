@@ -41,16 +41,7 @@ CREATE TABLE appsalon.dates
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     date DATE NOT NULL,
     time TIME NOT NULL,
+    services TINYINT NOT NULL,
     userId INT(11),
     FOREIGN KEY (userId) REFERENCES users(id) ON DELETE SET NULL
-);
-
-/* Tabla pivote citas-servicios */
-CREATE TABLE datesServices
-(
-    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    dateId INT(11),
-    serviceId INT(11),
-    FOREIGN KEY (dateId) REFERENCES dates(id) ON DELETE SET NULL,
-    FOREIGN KEY (serviceId) REFERENCES services(id) ON DELETE SET NULL
 );

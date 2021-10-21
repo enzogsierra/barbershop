@@ -9,6 +9,7 @@ use MVC\Router;
 
 $router = new Router();
 
+// Rutas para usuarios no autenticados
 if(!isset($_SESSION["logged"]))
 {
     // Login
@@ -27,16 +28,16 @@ if(!isset($_SESSION["logged"]))
     $router->get("/password-reset", [AuthController::class, "passwordReset"]);
     $router->post("/password-reset", [AuthController::class, "passwordReset"]);
 }
-else
+else // Rutas para usuarios autenticados
 {
     // Login
     $router->get("/logout", [AuthController::class, "logout"]);
 
     // Admin
-    if(isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == 1)
+    if($_SESSION["isAdmin"])
     {
     }
-    else
+    else // Cliente
     {
         $router->get("/", [DateController::class, "index"]);
     }
@@ -45,6 +46,9 @@ else
     $router->get("/api/services", [APIController::class, "index"]);
 }
 
+// Rutas globales
 $router->post("/api/book-date", [APIController::class, "bookDate"]);
+
+
 //
 $router->checkRoutes();
