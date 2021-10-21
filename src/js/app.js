@@ -287,7 +287,7 @@ async function bookDate()
         const response = await api.json();
 
         // Se creó la cita
-        if(response.success)
+        if(response.response == 200)
         {
             Swal.fire(
             {
@@ -296,6 +296,15 @@ async function bookDate()
                 text: "Tu cita se reservó correctamente.",
                 confirmButtonText: "Aceptar"
             }).then(() => { window.location.reload(); });
+        }
+        else // Hubo un error
+        {
+            Swal.fire(
+            {
+                icon: 'error',
+                title: 'Ocurrió un error',
+                text: `Hubo un error al procesar tu información, revisa que tus datos sean válidos. Código: ${response.response}`
+            });
         }
     }
     catch
