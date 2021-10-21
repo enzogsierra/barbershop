@@ -38,8 +38,8 @@ class AuthController
                     $_SESSION["id"] = $user->id;
                     $_SESSION["name"] = $user->name;
                     $_SESSION["surname"] = $user->surname;
-
-                    debug($_SESSION);
+                    $_SESSION["isAdmin"] = $user->isAdmin;
+                    header("Location: /");
                 }
             }
         }

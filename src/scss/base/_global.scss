@@ -1,4 +1,12 @@
-a 
-{ 
-    text-decoration: none; 
+html 
+{
+    box-sizing: border-box;
 }
+*, *:before, *:after 
+{
+    box-sizing: inherit;
+}
+
+
+// Utilidades
+.pe-not-allowed { cursor: not-allowed; }

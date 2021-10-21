@@ -1,0 +1,87 @@
+:root
+{
+    --color-primary: #0d6efd
+}
+
+body
+{
+    background-image: url("../img/background.jpg");
+    background-size: cover;
+    background-position: 60% 0;
+    background-repeat: no-repeat;
+
+    width: 100%;
+    height: max-content;
+    min-height: 100vh;
+}
+
+
+// Lado izquierdo
+@media(max-width: 768px)
+{
+    .main 
+    {
+        .header-link { text-align: center; }
+        flex-direction: column; 
+    }
+}
+
+
+// Lado derecho
+.app
+{
+    width: 100%;
+    min-width: 15rem;
+    max-width: 48rem;
+
+    height: 100%;
+    min-height: 100vh;
+
+    background-color: rgba(0, 0, 0, .8);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+}
+
+@media(max-width: 480px)
+{
+    .nav { flex-direction: column; }
+}
+
+
+// Servicios
+.tab-services
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+.service
+{
+    background-color: white;
+    transition: all .2s ease;
+    cursor: pointer;
+
+    &-selected
+    {
+        p { color: white; } 
+        background-color: var(--color-primary);
+        transform: scale(1.02);
+    }
+    &:not(.service-selected):hover
+    {
+        background-color: darken(white, 15);
+        transform: scale(1.02); 
+    }
+
+    //
+    &-price
+    {
+        color: var(--color-primary);
+        font-weight: bold;
+    }
+}
+
+@media(max-width: 480px)
+{
+    .tab-services { grid-template-columns: 1fr; }
+}
