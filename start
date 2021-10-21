@@ -1,0 +1,5 @@
+<?php
+// Ejecuta el servidor PHP automáticamente
+// Simplemente tipea "php start" en la consola
+
+shell_exec("cd .\\public && php -S localhost:3000");

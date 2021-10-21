@@ -1,42 +1,10 @@
 const summary =
-/*{
+{
     name: "",
     date: "",
     time: "",
     services: []
-};*/
-{
-    "name": "Enzo Sierra",
-    "date": "2021-10-25",
-    "time": "10:00",
-    "services": [
-        {
-            "id": "1",
-            "text": "Corte de cabello para mujer",
-            "price": "90.00"
-        },
-        {
-            "id": "2",
-            "text": "Corte de cabello para hombre",
-            "price": "80.00"
-        },
-        {
-            "id": "3",
-            "text": "Corte de cabello para niños",
-            "price": "60.00"
-        },
-        {
-            "id": "4",
-            "text": "Peinado Mujer",
-            "price": "80.00"
-        },
-        {
-            "id": "5",
-            "text": "Peinado Hombre",
-            "price": "60.00"
-        }
-    ]
-}
+};
 
 document.addEventListener("DOMContentLoaded", function()
 {
