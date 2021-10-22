@@ -4,9 +4,10 @@ CREATE DATABASE IF NOT EXISTS appsalon;
 CREATE TABLE appsalon.users
 (
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(32) NOT NULL,
+    password VARCHAR(60) NOT NULL,
     name VARCHAR(64) NOT NULL,
     surname VARCHAR(64) NOT NULL,
-    email VARCHAR(32) NOT NULL,
     tel VARCHAR(16),
     isAdmin TINYINT(1),
     isConfirmed TINYINT(1),
@@ -41,7 +42,7 @@ CREATE TABLE appsalon.dates
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     date DATE NOT NULL,
     time TIME NOT NULL,
-    services TINYINT NOT NULL,
+    services TINYTEXT NOT NULL,
     userId INT(11),
     FOREIGN KEY (userId) REFERENCES users(id) ON DELETE SET NULL
 );
