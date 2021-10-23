@@ -15,19 +15,6 @@ class ActiveRecord
         self::$db = $database;
     }
 
-    public static function query($query)
-    {
-        $data = [];
-        $result = self::$db->query($query); 
-        while($row = $result->fetch_assoc()) 
-        {
-            $data[] = static::createObject($row);
-        }
-
-        $result->free();
-        return $data; 
-    }
-
     public function save()
     {
         // Sanitizar datos
@@ -42,7 +29,9 @@ class ActiveRecord
         $table = static::$table;
         $columns = join(", ", array_keys($input));
         $values = join("', '", array_values($input));
-        return self::$db->query("INSERT INTO $table ($columns) VALUES ('$values')");
+        $result = self::$db->query("INSERT INTO $table ($columns) VALUES ('$values')");
+        $this->id = self::$db->insert_id;
+        return $result;
     }
 
     public function update()
@@ -76,6 +65,19 @@ class ActiveRecord
 
 
     // query
+    public static function query($query)
+    {
+        $data = [];
+        $result = self::$db->query($query); 
+        while($row = $result->fetch_assoc()) 
+        {
+            $data[] = static::createObject($row);
+        }
+
+        $result->free();
+        return $data; 
+    }
+
     public static function all()
     {
         return self::query("SELECT * FROM " . static::$table);
@@ -83,7 +85,7 @@ class ActiveRecord
 
     public static function findById($id)
     {
-        return self::query("SELECT * FROM " . static::$table . " WHERE id = '$id'");
+        return self::query("SELECT * FROM " . static::$table . " WHERE id = '$id' LIMIT 1");
     }
 
     public static function where($column, $value, $limit = 1)
@@ -96,11 +98,24 @@ class ActiveRecord
         return self::query("SELECT * FROM " . static::$table . " LIMIT $limit");
     }
 
+    public static function custom($query)
+    {
+        $data = [];
+        $result = self::$db->query($query); 
+        while($row = $result->fetch_assoc()) 
+        {
+            $data[] = $row;
+        }
+
+        $result->free();
+        return $data;
+    }
+
     //
-    public static function createObject($registro)
+    public static function createObject($data)
     {
         $object = new static;
-        foreach($registro as $key => $value)
+        foreach($data as $key => $value)
         {
             if(property_exists($object, $key)) $object->$key = $value;
         }

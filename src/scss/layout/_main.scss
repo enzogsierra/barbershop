@@ -9,32 +9,24 @@ body
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
-    min-height: 100vh;
+    height: 100vh;
 }
-
-@media(max-width: 768px)
-{
-    body 
-    {
-        .h1 { text-align: center; }
-        flex-direction: column; 
-    }
-}
-
 
 
 // Right side
 .app-end
 {
     width: 100%;
+    height: 100%;
+
     min-width: 15rem;
     max-width: 48rem;
-    min-height: 100vh;
 
     background-color: rgba(0, 0, 0, .8);
-    -webkit-backdrop-filter: blur(3px);
     backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+
+    overflow-y: auto;
 }
 
 .auth-card
@@ -77,9 +69,50 @@ body
     }
 }
 
+//
+/*#services > div
+{
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+    background-color: rgba(108, 117, 125, .25);
+
+    transition: all .3s ease-out;
+}
+#services > .service-card-highlight
+{
+    background-color: rgba(108, 117, 125, .5);
+    transform: scale(1.02);
+}*/
+
+
+// Media
 @media(max-width: 480px)
 {
     .nav { flex-direction: column; }
     .tab-services { grid-template-columns: 1fr; }
     #summary-book-btn { width: 100%; }
+}
+
+
+@media(max-width: 768px)
+{
+    body 
+    {
+        flex-direction: column;
+        .h1 { text-align: center; }
+    }
+
+    //
+    body { background-image: none; }
+    .app-start
+    {
+        background-image: url("../img/background.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 25rem;
+    }
+    .app-end
+    {
+        background: linear-gradient(180deg, rgba(8,4,0,1) 0%, rgba(24,10,0,1) 100%);
+    }
 }

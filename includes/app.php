@@ -27,3 +27,12 @@ function s($html): string
 {
     return htmlspecialchars($html);
 }
+
+function isDateInRange($date)
+{
+    $val = strtotime($date);
+    $min = strtotime("next day 00:00:00");
+    $max = strtotime("+1 month");
+
+    return ($val >= $min && $val <= $max);
+}

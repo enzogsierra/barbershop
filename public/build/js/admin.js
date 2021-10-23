@@ -1,0 +1,1 @@
+function onDateFilter(t){const e=t.target.value;window.location="?date="+e}document.addEventListener("DOMContentLoaded",(function(){const t=document.querySelector("input#date-filter");t&&t.addEventListener("input",onDateFilter)}));

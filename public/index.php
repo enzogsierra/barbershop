@@ -2,6 +2,7 @@
 require_once __DIR__ . "/../includes/app.php";
 session_start();
 
+use Controllers\AdminController;
 use Controllers\APIController;
 use Controllers\AuthController;
 use Controllers\DateController;
@@ -30,24 +31,23 @@ if(!isset($_SESSION["logged"]))
 }
 else // Rutas para usuarios autenticados
 {
-    // Login
+    $router->get("/", [DateController::class, "index"]);
     $router->get("/logout", [AuthController::class, "logout"]);
+
+    // API de citas
+    $router->get("/api/services", [APIController::class, "index"]);
+    $router->post("/api/book-date", [APIController::class, "bookDate"]);
 
     // Admin
     if($_SESSION["isAdmin"])
     {
+        $router->get("/admin", [AdminController::class, "index"]);
+        $router->get("/admin/services", [AdminController::class, "services"]);
+        $router->post("/admin/services/new", [AdminController::class, "newService"]);
+        $router->post("/admin/services/edit", [AdminController::class, "editService"]);
+        $router->post("/admin/services/delete", [AdminController::class, "deleteService"]);
     }
-    else // Cliente
-    {
-        $router->get("/", [DateController::class, "index"]);
-    }
-
-    // Api de citas
-    $router->get("/api/services", [APIController::class, "index"]);
 }
-
-// Rutas globales
-$router->post("/api/book-date", [APIController::class, "bookDate"]);
 
 
 //

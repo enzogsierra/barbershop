@@ -93,7 +93,7 @@ function createServices(services)
     
         card.innerHTML = 
         `
-            <p class="service-text my-0 fs-5">${text}</p>
+            <p class="service-text my-0 fs-5 text-break">${text}</p>
             <p class="service-price my-0 fs-4 fw-bold">$${parseInt(price)}</p>
         `;
         

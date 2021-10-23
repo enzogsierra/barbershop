@@ -97,17 +97,9 @@ class APIController
     }
 }
 
+
 function sendResponse($code)
 {
     echo json_encode(["response" => $code]);
     exit;
-}
-
-function isDateInRange($date)
-{
-    $val = strtotime($date);
-    $min = strtotime("next day 00:00:00");
-    $max = strtotime("+1 month");
-
-    return ($val >= $min && $val <= $max);
 }
