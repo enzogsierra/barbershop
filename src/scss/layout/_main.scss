@@ -69,20 +69,6 @@ body
     }
 }
 
-//
-/*#services > div
-{
-    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-    background-color: rgba(108, 117, 125, .25);
-
-    transition: all .3s ease-out;
-}
-#services > .service-card-highlight
-{
-    background-color: rgba(108, 117, 125, .5);
-    transform: scale(1.02);
-}*/
-
 
 // Media
 @media(max-width: 480px)
@@ -114,5 +100,21 @@ body
     .app-end
     {
         background: linear-gradient(180deg, rgba(8,4,0,1) 0%, rgba(24,10,0,1) 100%);
+    }
+}
+
+
+//
+.error404
+{
+    height: 100%;
+
+    &-img
+    {
+        width: 100%;
+        min-width: 8rem;
+        max-width: 20rem;
+
+        &w { filter: invert(100); }
     }
 }
