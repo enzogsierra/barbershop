@@ -2,7 +2,7 @@
 Aplicación Web de barbería para el manejo y administración de servicios y citas. Los clientes pueden seleccionar los servicios disponibles y seleccionar una fecha y hora, luego podrán ver un resumen con el total a pagar y reservar una cita. Los administradores del sitio pueden administrar los servicios y ver las citas reservadas.
 
 ### Clientes
-- Registro
+- Registro con sistema de tokens
 - Inicio de sesión
 - Confirmación de email
 - Recuperar contraseña
