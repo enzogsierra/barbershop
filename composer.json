@@ -1,6 +1,4 @@
 {
-    "name": "barbershop",
-    "description": "Proyecto PHP8, MVC, SQL, SASS, Gulp",
     "type": "project",
     "autoload": 
     {
