@@ -1,1 +1,247 @@
-let editing=!1,originalHTML="",Toast=[];async function onServiceAdded(e){e.preventDefault();const t=document.querySelector("#service-new-text").value,n=document.querySelector("#service-new-price").value,i=new FormData;i.append("text",t),i.append("price",n);const r=await sendForm(i,"new");if(200===r.response){const e=document.querySelectorAll("tr[service-id]").length+1,i=document.createElement("TR");i.setAttribute("service-id",""+r.id),i.innerHTML=`\n            <tr service-id="${r.id}">\n                <th scope="row">${e}</th>\n                <td id="service-text">${t}</td>\n                <td id="service-price">$${n}</td>\n                \n                <td class="text-center text-nowrap">\n                    <button class="btn btn-secondary col" id="service-btn-edit" title="Editar"><i class="far fa-edit btn-child"></i></button>\n                    <button class="btn btn-outline-danger col" id="service-btn-delete" title="Eliminar"><i class="far fa-trash-alt btn-child"></i></button>\n                </td>\n            </tr>\n        `,document.querySelector("tbody#services").appendChild(i),document.querySelector("#service-form-new").reset(),Toast.fire({icon:"success",title:"Servicio creado correctamente"})}else Toast.fire({icon:"error",title:"Hubo un error al procesar la información. Verifica que los datos sean correctos.\nCódigo "+r.response})}function onServicesClick(e){const t=e.target.classList.contains("btn-child")?e.target.parentElement:e.target;if("service-btn-edit"==t.id){editing&&document.querySelector("#service-btn-cancel").click(),editing=!0;const e=t.parentElement.parentElement,n=e.getAttribute("service-id"),i=e.querySelector("#service-text").textContent,r=e.querySelector("#service-price").textContent.substring(1);e.classList.add("table-active"),originalHTML=e.innerHTML,e.innerHTML=`\n            <form>\n                <th scope="row">${n}</tr>\n                <td scope="col">\n                    <div class="input-group">\n                        <span class="input-group-text"><i class="far fa-file-alt"></i></span>\n                        <input type="text" class="form-control" id="service-edited-text" value="${i}" maxlength="64" required>\n                    </div>\n                    <p class="form-text my-0">El texto debe tener entre 5 y 64 caracteres</p>\n                </td>\n                <td width="20%">\n                    <div class="input-group">\n                        <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>\n                        <input type="number" class="form-control" id="service-edited-price" value="${r}" min="0" required>\n                    </div>\n                    <p class="d-none form-text">Puedes usar decimales (Ejemplo: <strong>4,99</strong>)</p>\n                </td>\n\n                <td class="text-center text-nowrap align-middle">\n                    <button type="submit" class="btn btn-success" id="service-btn-save" title="Guardar"><i class="far fa-save"></i></button>\n                    <button type="button" class="btn btn-secondary" id="service-btn-cancel" title="Cancelar"><i class="fas fa-times-circle"></i></button>\n                </td>\n            </form>\n        `;const c=e.querySelector("#service-btn-save"),o=e.querySelector("#service-btn-cancel");c.onclick=async function(t){t.preventDefault();const i=e.querySelector("#service-edited-text").value,r=e.querySelector("#service-edited-price").value,c=new FormData;c.append("id",n),c.append("text",i),c.append("price",r);const s=await sendForm(c,"edit");200==s.response?(e.innerHTML=originalHTML,e.querySelector("#service-text").innerText=""+i,e.querySelector("#service-price").innerText="$"+parseFloat(r).toFixed(2),originalHTML=e.innerHTML,o.click(),Toast.fire({icon:"success",title:"Servicio editado correctamente"})):Toast.fire({icon:"error",title:"Hubo un error al procesar la información. Verifica que los datos sean correctos.\nCódigo "+s.response})},o.addEventListener("click",(function(){editing=!1,e.classList.remove("table-active"),e.innerHTML=originalHTML}))}if("service-btn-delete"===t.id){if(editing)return void Toast.fire({icon:"error",title:"Termina de editar el servicio actual antes de continuar"});const e=t.parentElement.parentElement,n=e.getAttribute("service-id");Swal.fire({title:"Eliminar",text:"¿Seguro que quieres eliminar este servicio? Esta acción es irreversible",icon:"warning",showCancelButton:!0,confirmButtonColor:"#dc3545",cancelButtonColor:"#6c757d",confirmButtonText:"Eliminar",cancelButtonText:"Cancelar"}).then((async function(t){if(t.isConfirmed){const t=new FormData;t.append("id",n);const i=await sendForm(t,"delete");200===i.response?(e.remove(),Toast.fire({icon:"success",title:"Servicio eliminado correctamente"})):Toast.fire({icon:"error",title:"Hubo un error y no pudimos eliminar este servicio.\nCódigo "+i.response})}}))}}async function sendForm(e,t){const n={method:"POST",body:e},i=await fetch(`http://${window.location.host}/admin/services/${t}`,n);return await i.json()}document.addEventListener("DOMContentLoaded",(function(){document.querySelector("#service-btn-new").addEventListener("click",onServiceAdded);document.querySelector("tbody#services").addEventListener("click",onServicesClick),Toast=Swal.mixin({toast:!0,position:"top-end",showConfirmButton:!1,timer:4e3,timerProgressBar:!0,didOpen:e=>{e.addEventListener("mouseenter",Swal.stopTimer),e.addEventListener("mouseleave",Swal.resumeTimer)}})}));
+let editing = false;
+let originalHTML = "";
+let Toast = [];
+
+
+document.addEventListener("DOMContentLoaded", function() 
+{
+    const newServiceBtn = document.querySelector("#service-btn-new");
+    newServiceBtn.addEventListener("click", onServiceAdded);
+
+    //
+    const services = document.querySelector("tbody#services");
+    services.addEventListener("click", onServicesClick);
+
+    // Crear sweetalert - mensaje default
+    Toast = Swal.mixin(
+    {
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 4000,
+        timerProgressBar: true,
+        didOpen: (toast) => 
+        {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    });
+});
+
+
+// Cuando el usuario hace click en "Añadir" servicio
+async function onServiceAdded(e)
+{
+    e.preventDefault();
+    const text = document.querySelector("#service-new-text").value;
+    const price = document.querySelector("#service-new-price").value;
+
+    // Servicio creado
+    if(true)
+    {
+        const count = document.querySelectorAll("tr[service-id]").length + 1;
+
+        // Crear elemento
+        const tr = document.createElement("TR");
+        tr.setAttribute("service-id", `${count}`);
+        tr.innerHTML = 
+        `
+            <tr service-id="${count}">
+                <th scope="row">${count}</th>
+                <td id="service-text">${text}</td>
+                <td id="service-price">$${price}</td>
+                
+                <td class="text-center text-nowrap">
+                    <button class="btn btn-secondary col" id="service-btn-edit" title="Editar"><i class="far fa-edit btn-child"></i></button>
+                    <button class="btn btn-outline-danger col" id="service-btn-delete" title="Eliminar"><i class="far fa-trash-alt btn-child"></i></button>
+                </td>
+            </tr>
+        `;
+
+        document.querySelector("tbody#services").appendChild(tr); // Añadir nuevo servicio a la lista
+        document.querySelector("#service-form-new").reset(); // Resetear formulario
+    
+        Toast.fire(
+        {
+            icon: 'success',
+            title: 'Servicio creado correctamente'
+        });
+    }
+    else // Error
+    {
+        Toast.fire(
+        {
+            icon: 'error',
+            title: `Hubo un error al procesar la información. Verifica que los datos sean correctos.\nCódigo ${response.response}`
+        });
+    }
+}
+
+
+// Cuando el usuari clickea en algún boton en la lista de servicios
+function onServicesClick(e)
+{
+    const btn = (!e.target.classList.contains("btn-child")) ? e.target : e.target.parentElement;
+
+    // Editar
+    if(btn.id == "service-btn-edit")
+    {
+        // Si ya está editando, clickear el boton de cancelar automaticamente
+        if(editing) document.querySelector("#service-btn-cancel").click();
+
+        editing = true; 
+
+        // Cambiar HTML
+        const row = btn.parentElement.parentElement; // Seleccionar el row (btn > td > tr)
+        const id = row.getAttribute("service-id"); // Obtener ID del servicio
+        const text = row.querySelector("#service-text").textContent; // Extraer el texto del servicio
+        const price = row.querySelector("#service-price").textContent.substring(1); // Extraer el precio del servicio y quitarle el '$'
+        
+        row.classList.add("table-active");
+        originalHTML = row.innerHTML; // Guardar el row original
+        row.innerHTML = // Modificar row
+        `
+            <form>
+                <th scope="row">${id}</tr>
+                <td scope="col">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="far fa-file-alt"></i></span>
+                        <input type="text" class="form-control" id="service-edited-text" value="${text}" maxlength="64" required>
+                    </div>
+                    <p class="form-text my-0">El texto debe tener entre 5 y 64 caracteres</p>
+                </td>
+                <td width="20%">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+                        <input type="number" class="form-control" id="service-edited-price" value="${price}" min="0" required>
+                    </div>
+                    <p class="d-none form-text">Puedes usar decimales (Ejemplo: <strong>4,99</strong>)</p>
+                </td>
+
+                <td class="text-center text-nowrap align-middle">
+                    <button type="submit" class="btn btn-success" id="service-btn-save" title="Guardar"><i class="far fa-save"></i></button>
+                    <button type="button" class="btn btn-secondary" id="service-btn-cancel" title="Cancelar"><i class="fas fa-times-circle"></i></button>
+                </td>
+            </form>
+        `;
+        const save = row.querySelector("#service-btn-save"); // Seleccionar boton de guardar
+        const cancel = row.querySelector("#service-btn-cancel"); // ~
+
+
+        // "Guardar"
+        save.onclick = async function(e)
+        {
+            e.preventDefault();
+            const editedText = row.querySelector("#service-edited-text").value; // Obtener el nuevo texto
+            const editedPrice = row.querySelector("#service-edited-price").value; // ~
+
+            // Crear form y enviarlo
+            const form = new FormData();
+            form.append("id", id);
+            form.append("text", editedText);
+            form.append("price", editedPrice);
+
+            if(true) // Servicio editado correctamente
+            {
+                // Re-generar html
+                row.innerHTML = originalHTML;
+                row.querySelector("#service-text").innerText = `${editedText}`;
+                row.querySelector("#service-price").innerText = `$${parseFloat(editedPrice).toFixed(2)}`;
+                originalHTML = row.innerHTML;
+
+                cancel.click(); // Finalizar edición
+
+                // Mostrar Sweetalert
+                Toast.fire(
+                {
+                    icon: 'success',
+                    title: 'Servicio editado correctamente'
+                });
+            }
+            else // Error
+            {
+                Toast.fire(
+                {
+                    icon: 'error',
+                    title: `Hubo un error al procesar la información. Verifica que los datos sean correctos.\nCódigo ${response.response}`
+                });
+            }
+        }
+
+        // Cancelar
+        cancel.addEventListener("click", function()
+        {
+            editing = false;
+            row.classList.remove("table-active");
+            row.innerHTML = originalHTML;
+        });
+    }
+
+    // Eliminar
+    if(btn.id === "service-btn-delete")
+    {
+        // Verificar que no esté editando un servicio
+        if(editing)
+        {
+            Toast.fire(
+            {
+                icon: 'error',
+                title: `Termina de editar el servicio actual antes de continuar`
+            });
+            return;
+        }
+
+
+        const row = btn.parentElement.parentElement; // Seleccionar el row (btn > td > tr)
+
+        // Mostrar Sweetalert
+        Swal.fire(
+        {
+            title: 'Eliminar',
+            text: "¿Seguro que quieres eliminar este servicio? Esta acción es irreversible",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#dc3545',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Eliminar',
+            cancelButtonText: "Cancelar"
+        })
+        .then(async function(result) 
+        {
+            if(result.isConfirmed) 
+            {
+                if(true)
+                {
+                    row.remove();
+
+                    Toast.fire(
+                    {
+                        icon: 'success',
+                        title: 'Servicio eliminado correctamente'
+                    });
+                }
+                else // Error
+                {
+                    Toast.fire(
+                    {
+                        icon: 'error',
+                        title: `Hubo un error y no pudimos eliminar este servicio.\nCódigo ${response.response}`
+                    });
+                }
+            }
+        });
+    }
+}
+
+// Envia un form a la url especificada
+async function sendForm(form, action)
+{
+    const options = 
+    {
+        method: "POST", 
+        body: form
+    };
+    const send = await fetch(`http://${window.location.host}/admin/services/${action}`, options);
+    const response = await send.json();
+    return response;
+}

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="es">
     <head>
         <meta charset="UTF-8">
@@ -14,74 +15,30 @@
         <main class="app-start w-100">
             <h1 class="h1 m-4 fs-1">
                 <a href="home.html" class="m-0 p-0 text-white text-decoration-none">
-                    <i class="fas fa-cut" aria-hidden="true"></i>arber<span class="text-primary">Shop</span>
+                    <i class="fas fa-cut"></i>arber<span class="text-primary">Shop</span>
                 </a>
             </h1>
         </main>
 
         <div class="app-end w-100 p-4 pt-3 text-white">
             <nav class="nav d-flex gap-2">
-                <button class="col btn btn-primary" tab-id="1">Servicios</button>
+                <button class="col btn btn-outline-light" tab-id="1">Servicios</button>
                 <button class="col btn btn-outline-light" tab-id="2">Reserva</button>
                 <button class="col btn btn-outline-light" tab-id="3">Resumen</button>
             </nav>
 
             <!-- Servicios -->
-            <div class="tab my-4 text-center" tab-id="1" style="display: block;">
+            <div class="tab my-4 text-center" tab-id="1">
                 <h2 class="my-0">Servicios</h2>
                 <h5 class="my-0">Selecciona tus servicios a continuación</h5>
 
                 <div class="tab-services my-4 text-black text-start">
 
-                    <div class="service p-3 rounded" service-id="1">
-                        <p class="service-text my-0 fs-5 text-break">Corte de Cabello Mujer</p>
-                        <p class="service-price my-0 fs-4 fw-bold">$90</p>
-                    </div>
-                    <div class="service p-3 rounded" service-id="2">
-                        <p class="service-text my-0 fs-5 text-break">Corte de Cabello Hombre</p>
-                        <p class="service-price my-0 fs-4 fw-bold">$80</p>
-                    </div>
-                    <div class="service p-3 rounded" service-id="3">
-                        <p class="service-text my-0 fs-5 text-break">Corte de Cabello Niño</p>
-                        <p class="service-price my-0 fs-4 fw-bold">$60</p>
-                    </div>
-                    <div class="service p-3 rounded" service-id="4">
-                        <p class="service-text my-0 fs-5 text-break">Peinado Mujer</p>
-                        <p class="service-price my-0 fs-4 fw-bold">$80</p>
-                    </div>
-                    <div class="service p-3 rounded" service-id="5">
-                        <p class="service-text my-0 fs-5 text-break">Peinado Hombre</p>
-                        <p class="service-price my-0 fs-4 fw-bold">$60</p>
-                    </div>
-                    <div class="service p-3 rounded" service-id="6">
-                        <p class="service-text my-0 fs-5 text-break">Peinado Niño</p>
-                        <p class="service-price my-0 fs-4 fw-bold">$60</p>
-                    </div>
-                    <div class="service p-3 rounded" service-id="7">
-                        <p class="service-text my-0 fs-5 text-break">Corte de Barba</p>
-                        <p class="service-price my-0 fs-4 fw-bold">$60</p>
-                    </div>
-                    <div class="service p-3 rounded" service-id="8">
-                        <p class="service-text my-0 fs-5 text-break">Tinte Mujer</p>
-                        <p class="service-price my-0 fs-4 fw-bold">$300</p>
-                    </div>
-                    <div class="service p-3 rounded" service-id="9">
-                        <p class="service-text my-0 fs-5 text-break">Uñas</p>
-                        <p class="service-price my-0 fs-4 fw-bold">$400</p>
-                    </div>
-                    <div class="service p-3 rounded" service-id="10">
-                        <p class="service-text my-0 fs-5 text-break">Lavado de Cabello</p>
-                        <p class="service-price my-0 fs-4 fw-bold">$50</p>
-                    </div>
-                    <div class="service p-3 rounded" service-id="11">
-                        <p class="service-text my-0 fs-5 text-break">Tratamiento Capilar</p>
-                        <p class="service-price my-0 fs-4 fw-bold">$150</p>
-                    </div>
                 </div>
             </div>
 
             <!-- Reservacion -->
-            <div class="tab" tab-id="2" style="display: none;">
+            <div class="tab" tab-id="2">
                 <div class="my-4 text-center">
                     <h2 class="my-0">Haz tu reservación</h2>
                     <h5 class="my-0">Coloca tus datos y fecha de cita</h5>
@@ -92,18 +49,19 @@
                     <div class="">
                         <label class="form-label">Cliente</label>
                         <input type="hidden" name="id" id="date-id" value="1">
-                        <input type="text" class="form-control pe-not-allowed" id="date-name" value="Enzo Sierra" disabled="">
+                        <input type="text" class="form-control pe-not-allowed" id="date-name" value="Sample User"
+                            disabled />
                     </div>
 
                     <div class="">
                         <label class="form-label" for="date">Fecha</label>
-                        <input type="date" id="date" class="form-control" min="2022-05-28" max="2022-06-27">
+                        <input type="date" id="date" class="form-control" min="2022-05-28" max="2022-06-27" />
                         <p class="my-0">De lunes a viernes</p>
                     </div>
 
                     <div class="">
                         <label class="form-label" for="time">Hora</label>
-                        <input type="time" id="time" class="form-control">
+                        <input type="time" id="time" class="form-control" />
                         <p class="my-0">Horarios de atención: 8:00am a 10pm</p>
                     </div>
                 </div>
@@ -114,7 +72,7 @@
             </div>
 
             <!-- Resumen -->
-            <div class="tab" tab-id="3" style="display: none;">
+            <div class="tab" tab-id="3">
                 <div class="my-4 summary-default d-none text-center">
                     <h2 class="my-0">Resumen</h2>
                     <h5 class="my-0">(Faltan datos de servicios, fecha y/u hora)</h5>
@@ -126,11 +84,12 @@
             </div>
 
             <div class="mt-5 d-flex justify-content-between align-items-center gap-2">
-                <p class="m-0 fs-5 fw-light">Bienvenido, <span class="fw-bold">Enzo</span></p>
-                <a href="index.html" class="btn btn-outline-light" title="Cerrar sesión">
-                    Cerrar sesión 
-                    <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
-                </a>
+                <p class="m-0 fs-5 fw-light">Bienvenido, <span class="fw-bold">Sample</span></p>
+
+                <div class="d-flex justify-content-center gap-2">
+                    <a href="admin-dates.html" class="btn btn-secondary">Admin</a>
+                    <a href="index.html" class="btn btn-outline-light" title="Cerrar sesión">Cerrar sesión <i class="fas fa-sign-out-alt"></i></a>
+                </div>
             </div>
         </div>
 

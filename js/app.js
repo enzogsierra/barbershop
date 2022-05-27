@@ -128,10 +128,6 @@ async function loadServices()
             }
         ];
         createServices(services);
-
-        /*const api = await fetch(`${window.location.href}api/services`);
-        const services = await api.json();
-        createServices(services);*/
     }
     catch(error)
     {
@@ -339,15 +335,15 @@ async function bookDate()
     try
     {
         // Enviar
-        const api = await fetch(`${window.location.href}api/book-date`,
+        /*const api = await fetch(`${window.location.href}api/book-date`,
         {
             method: "POST",
             body: form
         });
-        const response = await api.json();
+        const response = await api.json();*/
 
         // Se creó la cita
-        if(response.response == 200)
+        if(/*response.response == 200*/ true)
         {
             Swal.fire(
             {
