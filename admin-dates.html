@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BarberShop</title>
+
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
+    <script src="https://kit.fontawesome.com/5fd77854ec.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/build/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/build/css/app.css">
+</head>
+
+<body class="w-100 d-flex justify-content-between">
+    <main class="app-start w-100">
+        <h1 class="h1 m-4 fs-1">
+            <a href="/" class="m-0 p-0 text-white text-decoration-none">
+                <i class="fas fa-cut"></i>arber<span class="text-primary">Shop</span>
+            </a>
+        </h1>
+    </main>
+
+    <div class="app-end w-100 p-4 pt-3 text-white">
+        <div class="my-2 text-center">
+            <h2>Panel de administración</h2>
+        </div>
+
+        <nav class="mt-4 d-flex gap-2 flex-wrap pb-4 border-bottom">
+            <a href="/admin" class="col btn btn-primary">Citas</a>
+            <a href="/admin/services" class="col btn btn-primary">Servicios</a>
+        </nav>
+
+
+        <div class="mt-4 mb-2 input-group">
+            <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+            <input type="date" class="form-control" id="date-filter" value="2022-05-30">
+        </div>
+
+        <h3 class="m-0 text-center">
+            <i class="far fa-calendar" title="Fecha"></i>
+            2022-05-30
+        </h3>
+        <p class="my-0 text-center">3 cita/s</p>
+
+
+        <!-- Card -->
+        <h3 class="mt-5 mb-1 text-center">
+            <i class="far fa-clock text-info" title="Horario"></i>
+            12:00
+        </h3>
+
+        <div class="text-start p-2 rounded bg-secondary bg-opacity-75">
+            <div class="mb-2 d-flex justify-content-center flex-wrap gap-2 text-center">
+                <h5 class="my-0 p-2 rounded col bg-black bg-opacity-25">
+                    <i class="d-block fa fa-user text-info" title="Horario"></i>
+                    Enzo Sierra
+                </h5>
+                <h5 class="my-0 p-2 rounded col bg-black bg-opacity-25" title="Correo electrónico">
+                    <i class="d-block far fa-envelope text-info" title="Correo electrónico"></i>
+                    <a href="mailto:enzogsierra@gmail.com" class="text-light"> enzogsierra@gmail.com</a>
+                </h5>
+                <h5 class="my-0 p-2 rounded col bg-black bg-opacity-25" title="Teléfono">
+                    <i class="d-block fas fa-phone-alt text-info" title="Teléfono"></i>
+                    <a href="tel:enzogsierra@gmail.com" class="text-light"> 3644382805</a>
+                </h5>
+            </div>
+
+            <table class="table table-success table-striped mb-0">
+                <thead>
+                    <tr>
+                        <th>Servicios</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="fw-normal">Corte de Cabello Mujer</th>
+                        <th class="fw-normal">&dollar;90</th>
+                    </tr>
+                    <tr>
+                        <th class="fw-normal">Corte de Cabello Hombre</th>
+                        <th class="fw-normal">&dollar;80</th>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr class="fw-bold">
+                        <td>Total</td>
+                        <td>&dollar;170</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <h3 class="mt-5 mb-1 text-center">
+            <i class="far fa-clock text-info" title="Horario"></i>
+            16:00
+        </h3>
+
+        <div class="text-start p-2 rounded bg-secondary bg-opacity-75">
+            <div class="mb-2 d-flex justify-content-center flex-wrap gap-2 text-center">
+                <h5 class="my-0 p-2 rounded col bg-black bg-opacity-25">
+                    <i class="d-block fa fa-user text-info" title="Horario"></i>
+                    Enzo Sierra
+                </h5>
+                <h5 class="my-0 p-2 rounded col bg-black bg-opacity-25" title="Correo electrónico">
+                    <i class="d-block far fa-envelope text-info" title="Correo electrónico"></i>
+                    <a href="mailto:enzogsierra@gmail.com" class="text-light"> enzogsierra@gmail.com</a>
+                </h5>
+                <h5 class="my-0 p-2 rounded col bg-black bg-opacity-25" title="Teléfono">
+                    <i class="d-block fas fa-phone-alt text-info" title="Teléfono"></i>
+                    <a href="tel:enzogsierra@gmail.com" class="text-light"> 3644382805</a>
+                </h5>
+            </div>
+
+            <table class="table table-success table-striped mb-0">
+                <thead>
+                    <tr>
+                        <th>Servicios</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="fw-normal">Corte de Cabello Mujer</th>
+                        <th class="fw-normal">&dollar;90</th>
+                    </tr>
+                    <tr>
+                        <th class="fw-normal">Peinado Mujer</th>
+                        <th class="fw-normal">&dollar;80</th>
+                    </tr>
+                    <tr>
+                        <th class="fw-normal">Tinte Mujer</th>
+                        <th class="fw-normal">&dollar;300</th>
+                    </tr>
+                    <tr>
+                        <th class="fw-normal">Uñas</th>
+                        <th class="fw-normal">&dollar;400</th>
+                    </tr>
+                    <tr>
+                        <th class="fw-normal">Tratamiento Capilar</th>
+                        <th class="fw-normal">&dollar;150</th>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr class="fw-bold">
+                        <td>Total</td>
+                        <td>&dollar;1020</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <h3 class="mt-5 mb-1 text-center">
+            <i class="far fa-clock text-info" title="Horario"></i>
+            18:00
+        </h3>
+
+        <div class="text-start p-2 rounded bg-secondary bg-opacity-75">
+            <div class="mb-2 d-flex justify-content-center flex-wrap gap-2 text-center">
+                <h5 class="my-0 p-2 rounded col bg-black bg-opacity-25">
+                    <i class="d-block fa fa-user text-info" title="Horario"></i>
+                    Enzo Sierra
+                </h5>
+                <h5 class="my-0 p-2 rounded col bg-black bg-opacity-25" title="Correo electrónico">
+                    <i class="d-block far fa-envelope text-info" title="Correo electrónico"></i>
+                    <a href="mailto:enzogsierra@gmail.com" class="text-light"> enzogsierra@gmail.com</a>
+                </h5>
+                <h5 class="my-0 p-2 rounded col bg-black bg-opacity-25" title="Teléfono">
+                    <i class="d-block fas fa-phone-alt text-info" title="Teléfono"></i>
+                    <a href="tel:enzogsierra@gmail.com" class="text-light"> 3644382805</a>
+                </h5>
+            </div>
+
+            <table class="table table-success table-striped mb-0">
+                <thead>
+                    <tr>
+                        <th>Servicios</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="fw-normal">Corte de Barba</th>
+                        <th class="fw-normal">&dollar;60</th>
+                    </tr>
+                    <tr>
+                        <th class="fw-normal">Corte de Cabello Hombre</th>
+                        <th class="fw-normal">&dollar;80</th>
+                    </tr>
+                    <tr>
+                        <th class="fw-normal">Peinado Hombre</th>
+                        <th class="fw-normal">&dollar;60</th>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr class="fw-bold">
+                        <td>Total</td>
+                        <td>&dollar;200</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <script src="build/js/admin.js"></script>
+    </div>
+
+</body>
+
+<!--  -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</html>

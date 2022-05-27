@@ -1,50 +1,52 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>BarberShop</title>
 
-        <script src="https://kit.fontawesome.com/5fd77854ec.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="css/bootstrap.css">
-        <link rel="stylesheet" href="css/app.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BarberShop</title>
 
-    <body class="w-100 d-flex justify-content-between">
-        <main class="app-start w-100">
-            <h1 class="h1 m-4 fs-1">
-                <a href="index.html" class="m-0 p-0 text-white text-decoration-none">
-                    <i class="fas fa-cut"></i>arber<span class="text-primary">Shop</span>
-                </a>
-            </h1>
-        </main>
+    <script src="https://kit.fontawesome.com/5fd77854ec.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
 
-        <div class="w-100 p-4 d-flex flex-column justify-content-center align-items-center bg-white">
-            <!-- Card -->
-            <div class="auth-card p-3 border text-center">
-                <h2 class="my-0 mb-4">Iniciar sesión</h2>
+<body class="w-100 d-flex justify-content-between">
+    <main class="app-start w-100">
+        <h1 class="h1 m-4 fs-1">
+            <a href="index.html" class="m-0 p-0 text-white text-decoration-none">
+                <i class="fas fa-cut"></i>arber<span class="text-primary">Shop</span>
+            </a>
+        </h1>
+    </main>
 
-                <form method="POST" class="mb-1">
-                    <input name="email" type="email" class="form-control mb-3" value="" placeholder="Correo electrónico"
-                        required>
-                    <input name="password" type="password" class="form-control mb-3" placeholder="Contraseña" required>
+    <div class="w-100 p-4 d-flex flex-column justify-content-center align-items-center bg-white">
+        <!-- Card -->
+        <div class="auth-card p-3 border text-center">
+            <h2 class="my-0 mb-4">Iniciar sesión</h2>
 
-                    <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
-                </form>
+            <form method="POST" class="mb-1">
+                <input name="email" type="email" class="form-control mb-3" value="" placeholder="Correo electrónico"
+                    required>
+                <input name="password" type="password" class="form-control mb-3" placeholder="Contraseña" required>
 
-                <a href="password-recovery.html">¿Olvidate tu contraseña?</a>
+                <a href="home.html" class="btn btn-primary w-100">Iniciar sesión</a>
+            </form>
 
-                <div class="border-bottom my-3">
+            <a href="password-recovery.html">¿Olvidate tu contraseña?</a>
 
-                </div>
+            <div class="border-bottom my-3">
 
-                <p>¿No tienes una cuenta? ¡Regístrate gratis!</p>
-                <a href="signup.html" class="btn btn-success">Crear cuenta</a>
             </div>
-        </div>
 
-        <!--  -->
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    </body>
+            <p>¿No tienes una cuenta? ¡Regístrate gratis!</p>
+            <a href="signup.html" class="btn btn-success">Crear cuenta</a>
+        </div>
+    </div>
+
+    <!--  -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
 </html>
