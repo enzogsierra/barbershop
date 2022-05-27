@@ -1,7 +1,7 @@
-CREATE DATABASE IF NOT EXISTS appsalon;
+CREATE DATABASE IF NOT EXISTS barbershop;
 
 /* Tabla para usuarios */
-CREATE TABLE appsalon.users
+CREATE TABLE barbershop.users
 (
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(32) NOT NULL,
@@ -15,13 +15,13 @@ CREATE TABLE appsalon.users
 );
 
 /* Tabla para servicios */
-CREATE TABLE appsalon.services
+CREATE TABLE barbershop.services
 (
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     text VARCHAR(64) NOT NULL,
     price DECIMAL(5,2) NOT NULL
 );
-INSERT INTO appsalon.services (text, price) 
+INSERT INTO barbershop.services (text, price) 
 VALUES
     ('Corte de Cabello Mujer', '90.00'),
     ('Corte de Cabello Hombre', '80.00'),
@@ -37,7 +37,7 @@ VALUES
 ;
 
 /* Tabla para citas */
-CREATE TABLE appsalon.dates 
+CREATE TABLE barbershop.dates 
 (
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     date DATE NOT NULL,

@@ -3,7 +3,7 @@ require __DIR__ . "/../vendor/autoload.php";
 
 // DB
 use Model\ActiveRecord;
-$db = mysqli_connect("localhost", "root", "root", "appsalon");
+$db = mysqli_connect("localhost", "root", "root", "barbershop");
 ActiveRecord::setDB($db);
 
 if(!$db)

@@ -1,5 +1,5 @@
 {
-    "name": "enzo/appsalon",
+    "name": "barbershop",
     "description": "Proyecto PHP8, MVC, SQL, SASS, Gulp",
     "type": "project",
     "autoload": 
@@ -15,7 +15,7 @@
     "authors": 
     [
         {
-            "name": "Enzo",
+            "name": "Enzo Sierra",
             "email": "example@mail.com"
         }
     ],

@@ -23,23 +23,23 @@ class Email
         $mail->Host = 'smtp.mailtrap.io';
         $mail->SMTPAuth = true;
         $mail->Port = 2525;
-        $mail->Username = '0f0321750051f5';
-        $mail->Password = 'c97752abab6671';
+        $mail->Username = 'a068dcdafba431';
+        $mail->Password = 'cdcf4311fbca3e';
 
-        $mail->setFrom("noreply@appsalon.com");
+        $mail->setFrom("noreply@barbershop.com");
         $mail->addAddress($this->email, $this->name);
 
         //
         $html = "<html>";
-        $html .= "<h1>Bienvenido a AppSalon!</h1>";
+        $html .= "<h1>Bienvenido a BarberShop!</h1>";
         $html .= "<p>Estimado <strong>$this->name</strong>, tómate un momento para confirmar que tu dirección de correo electrónico es correcta y te pertenece.</p>";
         $html .= "<p><a href='http://localhost:3000/email-confirmation?token=$this->token'>Verificar</a></p><br><br>";
-        $html .= "Si usted no solicitó una cuenta en appsalon.com, ignore este mensaje.";
+        $html .= "Si usted no solicitó una cuenta en barbershop.com, ignore este mensaje.";
         $html .= "</html>";
 
         $mail->isHTML(true);
         $mail->CharSet = "UTF-8";
-        $mail->Subject = "Bienvenido a AppSalon!";
+        $mail->Subject = "Bienvenido a BarberShop!";
         $mail->Body = $html;
 
         $mail->send();
@@ -55,13 +55,13 @@ class Email
         $mail->Username = '0f0321750051f5';
         $mail->Password = 'c97752abab6671';
 
-        $mail->setFrom("noreply@appsalon.com");
+        $mail->setFrom("noreply@barbershop.com");
         $mail->addAddress($this->email, $this->name);
 
         //
         $mail->isHTML(true);
         $mail->CharSet = "UTF-8";
-        $mail->Subject = "[AppSalon] Reestablecer contraseña";
+        $mail->Subject = "[BarberShop] Reestablecer contraseña";
 
         $html = "<html>";
         $html .= "<h1>Estimado $this->name</h1>";
