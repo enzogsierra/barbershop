@@ -69,9 +69,69 @@ async function loadServices()
 {
     try
     {
-        const api = await fetch(`${window.location.href}api/services`);
-        const services = await api.json();
+        const services =
+        [
+            {
+                "id": "1",
+                "text": "Corte de Cabello Mujer",
+                "price": "90.00"
+            },
+            {
+                "id": "2",
+                "text": "Corte de Cabello Hombre",
+                "price": "80.00"
+            },
+            {
+                "id": "3",
+                "text": "Corte de Cabello Niño",
+                "price": "60.00"
+            },
+            {
+                "id": "4",
+                "text": "Peinado Mujer",
+                "price": "80.00"
+            },
+            {
+                "id": "5",
+                "text": "Peinado Hombre",
+                "price": "60.00"
+            },
+            {
+                "id": "6",
+                "text": "Peinado Niño",
+                "price": "60.00"
+            },
+            {
+                "id": "7",
+                "text": "Corte de Barba",
+                "price": "60.00"
+            },
+            {
+                "id": "8",
+                "text": "Tinte Mujer",
+                "price": "300.00"
+            },
+            {
+                "id": "9",
+                "text": "Uñas",
+                "price": "400.00"
+            },
+            {
+                "id": "10",
+                "text": "Lavado de Cabello",
+                "price": "50.00"
+            },
+            {
+                "id": "11",
+                "text": "Tratamiento Capilar",
+                "price": "150.00"
+            }
+        ];
         createServices(services);
+
+        /*const api = await fetch(`${window.location.href}api/services`);
+        const services = await api.json();
+        createServices(services);*/
     }
     catch(error)
     {
